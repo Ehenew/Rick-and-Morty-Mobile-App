@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 controller: _searchController,
                 autofocus: false,
                 decoration: InputDecoration(
-                  labelText: 'Search by name',
+                  labelText: 'Search name',
                   hintText: 'Rick',
                   hintStyle: const TextStyle(
                     color: Color.fromARGB(255, 208, 202, 202),
