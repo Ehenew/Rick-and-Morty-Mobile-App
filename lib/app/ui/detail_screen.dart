@@ -21,7 +21,7 @@ class _DetailScreenState extends State<DetailScreen> {
         title: const Text(
           "Character Details",
           style: TextStyle(
-            color: Color.fromARGB(255, 69, 81, 94),
+            color: Color.fromARGB(255, 85, 102, 119),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -33,10 +33,25 @@ class _DetailScreenState extends State<DetailScreen> {
           options: QueryOptions(
             document: getCharacterDetails(),
             variables: {'id': widget.id},
+            fetchPolicy: FetchPolicy.cacheFirst,
           ),
           builder: (QueryResult result,
               {VoidCallback? refetch, FetchMore? fetchMore}) {
             if (result.hasException) {
+              // Check if the error is a network error
+              final isNetworkError = result.exception!.linkException != null;
+
+              if (isNetworkError) {
+                return const Center(
+                    child: Text(
+                  'Oops, connection needed!',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Color.fromARGB(255, 104, 121, 158),
+                  ),
+                ));
+              }
+
               return Center(child: Text(result.exception.toString()));
             }
 

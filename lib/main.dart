@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rick_and_morty/app/ui/home_screen.dart';
+import 'package:rick_and_morty/app/ui/detail_screen.dart';
 
 void main() async {
   await initHiveForFlutter();

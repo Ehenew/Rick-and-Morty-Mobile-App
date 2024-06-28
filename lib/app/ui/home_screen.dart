@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Image.asset(
               "assets/logo.png",
+              // color: Color.fromARGB(149, 4, 194, 236),
               height: 56,
             ),
             const SizedBox(width: 28),
@@ -46,11 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 onChanged: (value) {
-                  setState(() {
-                    _searchQuery = value;
-                  });
-                },
-                onSubmitted: (value) {
                   setState(() {
                     _searchQuery = value;
                   });
@@ -204,7 +200,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                     // We got data but it is null
                     else if (result.data == null) {
-                      return const Text("Data Not Found!");
+                      return Center(
+                        child: const Text(
+                          "Data Not Found!",
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      );
                     } else if (result.isLoading) {
                       return const Center(
                         child: Text("Loading..."),
@@ -213,7 +217,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     // error state
                     else {
                       return const Center(
-                        child: Center(child: Text("Something went wrong")),
+                        child: Center(
+                          child: Text(
+                            "Something went wrong",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
                       );
                     }
                   },
