@@ -13,3 +13,7 @@ final gqlProvider = StateProvider(
     ),
   )),
 );
+
+class StateProvider {
+  StateProvider(ValueNotifier<GraphQLClient> Function(dynamic ref) param0);
+}

@@ -21,44 +21,51 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset(
-          "assets/logo.png",
-          height: 56,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(
+              "assets/logo.png",
+              height: 56,
+            ),
+            const SizedBox(width: 28),
+            Expanded(
+              child: TextField(
+                controller: _searchController,
+                autofocus: false,
+                decoration: InputDecoration(
+                  labelText: 'Search by name',
+                  hintText: 'Rick',
+                  hintStyle: const TextStyle(
+                    color: Color.fromARGB(255, 208, 202, 202),
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value;
+                  });
+                },
+                onSubmitted: (value) {
+                  setState(() {
+                    _searchQuery = value;
+                  });
+                },
+              ),
+            ),
+          ],
         ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: TextField(
-                  controller: _searchController,
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: 'Search by name',
-                    hintText: 'Rick',
-                    hintStyle: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    setState(() {
-                      _searchQuery = value;
-                    });
-                  },
-                  onSubmitted: (value) {
-                    setState(() {
-                      _searchQuery = value;
-                    });
-                  },
-                ),
-              ),
               Row(
                 children: [
                   Flexible(

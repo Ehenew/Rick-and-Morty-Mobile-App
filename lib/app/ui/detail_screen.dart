@@ -89,18 +89,15 @@ class _DetailScreenState extends State<DetailScreen> {
                     const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Flexible(
-                        child: Text(
-                          character['name'],
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: Colors.orange,
-                                    fontSize: 32,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      child: Text(
+                        character['name'],
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: Colors.orange,
+                              fontSize: 32,
+                              fontWeight: FontWeight.w900,
+                            ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -148,7 +145,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                           IconAndLabel(
                             label: character['species'],
-                            icon: Icons.psychology_alt_outlined,
+                            icon: Icons.psychology_outlined,
                           ),
                           IconAndLabel(
                             label: character['gender'],
@@ -274,8 +271,7 @@ class IconAndLabel extends StatelessWidget {
         ),
         const SizedBox(width: 6),
         if (flexible)
-          Flexible(
-            flex: 1,
+          Expanded(
             child: Text(
               label,
               maxLines: 3,
