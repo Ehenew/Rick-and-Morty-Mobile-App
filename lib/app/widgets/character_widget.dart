@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rick_and_morty/app/model/character.dart';
 import 'package:rick_and_morty/app/ui/detail_screen.dart';
 
@@ -10,10 +10,8 @@ class CharacterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Clickable Widget
     return GestureDetector(
       onTap: () {
-        print(character.name);
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DetailScreen(id: character.id),
         ));
@@ -21,8 +19,10 @@ class CharacterWidget extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width * .43,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: Colors.lightGreen)),
+          color: const Color.fromARGB(88, 194, 198, 154),
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(color: Colors.orangeAccent),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -43,7 +43,6 @@ class CharacterWidget extends StatelessWidget {
                 ),
               ),
             ),
-            // Space
             const SizedBox(
               height: 8,
             ),
@@ -52,20 +51,20 @@ class CharacterWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Name & Status
                   Row(
                     children: [
                       Flexible(
-                          flex: 1,
-                          child: Text(
-                            character.name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(fontWeight: FontWeight.w500),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          )),
+                        flex: 1,
+                        child: Text(
+                          character.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w500),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                       const SizedBox(
                         width: 4,
                       ),
@@ -87,7 +86,6 @@ class CharacterWidget extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  // Gender & Species
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -111,12 +109,12 @@ class CharacterWidget extends StatelessWidget {
                       icon: Icons.coronavirus_outlined,
                       flexible: true,
                     ),
-                  if (character.location.isNotEmpty)
-                    IconAndLabel(
-                      label: character.location,
-                      icon: Icons.pin_drop_outlined,
-                      flexible: true,
-                    ),
+                  // if (character.location.isNotEmpty)
+                  IconAndLabel(
+                    label: character.location,
+                    icon: Icons.pin_drop_outlined,
+                    flexible: true,
+                  ),
                   const SizedBox(
                     height: 12,
                   )
@@ -161,7 +159,6 @@ class IconAndLabel extends StatelessWidget {
             )
           : Text(
               label,
-              // maxLines: 2,overflow: TextOverflow.ellipsis,
             ),
     ]);
   }

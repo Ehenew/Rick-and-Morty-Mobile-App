@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       client: client,
       child: MaterialApp(
           title: 'Rich & Morty',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme:
                 ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
