@@ -4,9 +4,8 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rick_and_morty/app/utils/detail_query.dart';
 
 class DetailScreen extends StatefulWidget {
-  final String id;
-
   const DetailScreen({super.key, required this.id});
+  final String id;
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
