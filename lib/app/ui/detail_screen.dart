@@ -38,20 +38,20 @@ class _DetailScreenState extends State<DetailScreen> {
           builder: (QueryResult result,
               {VoidCallback? refetch, FetchMore? fetchMore}) {
             if (result.hasException) {
-              // Check if the error is a network error
+              // if the error is a network error
               final isNetworkError = result.exception!.linkException != null;
 
               if (isNetworkError) {
                 return const Center(
-                    child: Text(
-                  'Oops, connection needed!',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Color.fromARGB(255, 104, 121, 158),
+                  child: Text(
+                    'Oops, connection needed!',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Color.fromARGB(255, 104, 121, 158),
+                    ),
                   ),
-                ));
+                );
               }
-
               return Center(child: Text(result.exception.toString()));
             }
 

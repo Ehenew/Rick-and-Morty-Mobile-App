@@ -38,10 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   labelText: 'Search name',
                   hintText: 'Rick',
                   hintStyle: const TextStyle(
-                    color: Color.fromARGB(255, 208, 202, 202),
+                    color: Color.fromARGB(255, 155, 148, 148),
                   ),
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                      EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -68,10 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: _buildDropdown(
                       label: 'Gender',
                       value: _genderFilter,
-                      items: ['None', 'Male', 'Female', 'Unknown'],
+                      items: ['All', 'Male', 'Female', 'Unknown'],
                       onChanged: (value) {
                         setState(() {
-                          _genderFilter = value == 'None' ? null : value;
+                          _genderFilter = value == 'All' ? null : value;
                         });
                       },
                     ),
@@ -81,10 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: _buildDropdown(
                       label: 'Species',
                       value: _speciesFilter,
-                      items: ['None', 'Human', 'Alien', 'Humanoid', 'Unknown'],
+                      items: ['All', 'Human', 'Alien', 'Humanoid', 'Unknown'],
                       onChanged: (value) {
                         setState(() {
-                          _speciesFilter = value == 'None' ? null : value;
+                          _speciesFilter = value == 'All' ? null : value;
                         });
                       },
                     ),
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               .map((e) => Character.fromMap(e))
                               .toList();
 
-                      // Filter characters based on search query
+                      // to filter characters based on search query
                       if (_searchQuery.isNotEmpty) {
                         characters = characters
                             .where((character) => character.name
@@ -112,19 +112,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             .toList();
                       }
 
-                      // Apply additional filters with gender and species
+                      // filtering with gender and species
                       characters = characters.where((character) {
                         bool matches = true;
                         if (_genderFilter != null &&
                             _genderFilter!.isNotEmpty &&
-                            _genderFilter != 'None') {
+                            _genderFilter != 'All') {
                           matches = matches &&
                               character.gender.toLowerCase() ==
                                   _genderFilter!.toLowerCase();
                         }
                         if (_speciesFilter != null &&
                             _speciesFilter!.isNotEmpty &&
-                            _speciesFilter != 'None') {
+                            _speciesFilter != 'All') {
                           matches = matches &&
                               character.species.toLowerCase() ==
                                   _speciesFilter!.toLowerCase();
@@ -197,9 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       );
-                    }
-                    // We got data but it is null
-                    else if (result.data == null) {
+                    } else if (result.data == null) {
                       return Center(
                         child: const Text(
                           "Data Not Found!",
@@ -213,9 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return const Center(
                         child: Text("Loading..."),
                       );
-                    }
-                    // error state
-                    else {
+                    } else {
                       return const Center(
                         child: Center(
                           child: Text(
@@ -239,6 +235,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       }),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Center(
+                  child: Text(
+                    'By Ehenew Amogne',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromARGB(255, 116, 121, 84),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -253,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
     required ValueChanged<String?> onChanged,
   }) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 8),
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
           labelText: label,

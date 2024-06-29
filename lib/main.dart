@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rick_and_morty/app/ui/home_screen.dart';
-import 'package:rick_and_morty/app/ui/detail_screen.dart';
 
 void main() async {
   await initHiveForFlutter();
@@ -29,14 +28,14 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
       client: client,
       child: MaterialApp(
-          title: 'Rich & Morty',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
-            useMaterial3: true,
-          ),
-          home: const HomeScreen()),
+        title: 'Rich & Morty',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
+          useMaterial3: true,
+        ),
+        home: const HomeScreen(),
+      ),
     );
   }
 }

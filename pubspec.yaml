@@ -55,7 +55,7 @@ flutter_launcher_icons:
   adaptive_icon_foreground: "#0B32B2"
     
 flutter_app_name:
-  name: "Rick Morty"
+  name: "Rick and Morty"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
